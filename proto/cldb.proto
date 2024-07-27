@@ -1,0 +1,31 @@
+syntax="proto3";
+package cldb;
+
+service CLDB {
+  rpc Open(OpenReq) returns (Empty);
+  rpc Add(AddReq) returns (Empty);
+  rpc Status(StatusReq) returns (StatusRes);
+}
+
+message Empty {
+}
+
+message OpenReq {
+  bytes pk = 1;
+  string name = 2;
+}
+
+message AddReq {
+  string src = 1; 
+  bytes trg = 2;
+  uint64 q = 3;
+  bytes proof = 4;
+}
+
+message StatusReq {
+  bytes pk = 1; 
+}
+
+message StatusRes {
+  uint64 q = 1; 
+}

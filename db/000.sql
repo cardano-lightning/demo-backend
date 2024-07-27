@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS accounts
+(
+    pk BLOB PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL, 
+    at TEXT NOT NULL, 
+    CONSTRAINT unique_name UNIQUE(name)
+);
+
+CREATE TABLE IF NOT EXISTS adds
+(
+    id TEXT PRIMARY KEY NOT NULL,
+    src TEXT NOT NULL,
+    trg TEXT NOT NULL,
+    q TEXT NOT NULL, 
+    proof BLOB NOT NULL,
+    at TEXT NOT NULL, 
+    FOREIGN KEY(trg) REFERENCES accounts(pk)
+);
